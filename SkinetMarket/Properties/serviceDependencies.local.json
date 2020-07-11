@@ -5,6 +5,12 @@
     },
     "secrets1": {
       "type": "secrets.user"
+    },
+    "mssql1": {
+      "resourceId": null,
+      "type": "mssql.local",
+      "connectionId": "SkinetMarketServer",
+      "secretStore": "LocalSecretsFile"
     }
   }
 }
