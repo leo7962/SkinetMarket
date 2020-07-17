@@ -19,7 +19,7 @@ namespace Infrastructure.Contexts
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            if (Database.ProviderName =="Microsoft.EntityFrameworkCore.SqlServer")
+            if (Database.ProviderName == "Microsoft.EntityFrameworkCore.SqlServer")
             {
                 foreach (var entityType in modelBuilder.Model.GetEntityTypes())
                 {
