@@ -1,9 +1,9 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top"
   >
     <div class="container">
-      <img src="/assets/logo.png" style="max-height: 70px;" alt="logo">
+      <img src="/assets/logo.png" style="max-height: 70px;" alt="logo" />
       <button
         class="navbar-toggler"
         type="button"
@@ -19,7 +19,7 @@
         class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
         [ngClass]="{ show: isExpanded }"
       >
-        <ul class="navbar-nav flex-grow">
+        <ul class="navbar-nav flex-grow text-uppercase" style="font-size: larger;">
           <li
             class="nav-item"
             [routerLinkActive]="['link-active']"
@@ -28,17 +28,16 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
+            <a class="nav-link text-dark" [routerLink]="['/counter']">Shop</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
+              >Contact</a
             >
           </li>
           <li>
-            <a>
+            <a class="position-relative">
+              <span class="cart-no">4</span>
               <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
             </a>
           </li>
@@ -47,9 +46,9 @@
           </li>
           <li>
             <a class="btn btn-outline-secondary mr-3" href="#">Sign up</a>
-          </li>        
+          </li>
         </ul>
-      </div>      
+      </div>
     </div>
   </nav>
 </header>
