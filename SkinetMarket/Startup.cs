@@ -30,13 +30,7 @@ namespace SkinetMarket
             services.AddControllersWithViews();
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();
-            services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:44381/");
-                });
-            });
+
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -49,18 +43,6 @@ namespace SkinetMarket
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //Por defult en cualquier proyecto
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-            //    app.UseExceptionHandler("/Error");
-            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            //    app.UseHsts();
-            //}
-
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
@@ -74,7 +56,7 @@ namespace SkinetMarket
 
             app.UseRouting();
             app.UseStaticFiles();
-            app.UseCors("CorsPolicy");
+
             app.UseSwaggerDocumentation();
 
             app.UseEndpoints(endpoints =>
