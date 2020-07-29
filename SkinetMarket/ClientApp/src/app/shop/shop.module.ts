@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ShopComponent } from './shop.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [ShopComponent]
+  declarations: [ShopComponent],
+  imports: [CommonModule],
+  exports: [ShopComponent]
 })
-export class ShopModule { }
+export class ShopModule {}
