@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACP,KAAK,EAAE,IAAI;;AAGf,IAAK;EACD,KAAK,EAAE,GAAG",
+"sources": ["../../../../../../../Recursos%20y%20estilos/scss/product-item.component.scss"],
+"names": [],
+"file": "product-item.component.css"
+}
