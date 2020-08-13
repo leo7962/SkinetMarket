@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Infrastructure.Contexts;
-using Microsoft.AspNetCore.Http;
+﻿using Infrastructure.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using SkinetMarket.Errors;
 
 namespace SkinetMarket.Controllers
-{    
+{
     public class BuggyController : BaseApiController
     {
         private readonly DataContext _context;

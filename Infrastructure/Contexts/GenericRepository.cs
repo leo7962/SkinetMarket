@@ -45,6 +45,6 @@ namespace Infrastructure.Contexts
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
             return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
-        }        
+        }
     }
 }
