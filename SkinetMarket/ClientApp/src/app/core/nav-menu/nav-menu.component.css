@@ -10,6 +10,12 @@
   top: -20px;
   right: 22px; }
 
+a {
+  text-decoration: overline;
+  color: #343a40; }
+  a .active {
+    color: blue; }
+
 .navigation-clean-button {
   background: #fff;
   padding-top: 0.75rem;
@@ -20,6 +26,11 @@
           box-shadow: none;
   border: none;
   margin-bottom: 0; }
+
+.navbar-brand {
+  cursor: pointer; }
+  .navbar-brand:focus {
+    outline: none; }
 
 @media (min-width: 768px) {
   .navigation-clean-button {

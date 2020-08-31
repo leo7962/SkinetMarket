@@ -11,25 +11,18 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
+import { HomeModule } from './home/home.module';
+import { AppRoutes } from './routes';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
-  ],
+  declarations: [AppComponent, CounterComponent, FetchDataComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     CoreModule,
-    ShopModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ]),
+    HomeModule,
+    RouterModule.forRoot(AppRoutes),
     BrowserAnimationsModule,
   ],
   providers: [],
