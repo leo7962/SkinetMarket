@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Contexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SkinetMarket.Errors;
 
@@ -11,6 +12,13 @@ namespace SkinetMarket.Controllers
         public BuggyController(DataContext context)
         {
             _context = context;
+        }
+
+        [HttpGet("testauth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText()
+        {
+            return "secret stuff";
         }
 
         [HttpGet("notfound")]
