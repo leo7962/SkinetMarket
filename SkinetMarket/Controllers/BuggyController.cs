@@ -1,4 +1,5 @@
-﻿using Infrastructure.Contexts;
+﻿using Core.Models;
+using Infrastructure.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SkinetMarket.Errors;
@@ -24,24 +25,24 @@ namespace SkinetMarket.Controllers
         [HttpGet("notfound")]
         public ActionResult GetNotFoundRequest()
         {
-            var thing = _context.Products.Find(42);
+            Product thing = _context.Products.Find(42);
 
             if (thing == null)
             {
                 return NotFound(new ApiResponse(404));
             }
 
-            return Ok();
+            return BadRequest();
         }
 
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
-            var thing = _context.Products.Find(42);
+            Product thing = _context.Products.Find(42);
 
-            var thingToReturn = thing.ToString();
+            string thingToReturn = thing.ToString();
 
-            return Ok();
+            return BadRequest(thingToReturn);
         }
 
         [HttpGet("badrequest")]
@@ -53,7 +54,7 @@ namespace SkinetMarket.Controllers
         [HttpGet("badrequest/{id}")]
         public ActionResult GetNotFoundRequest(int id)
         {
-            return Ok();
+            return BadRequest();
         }
     }
 }
