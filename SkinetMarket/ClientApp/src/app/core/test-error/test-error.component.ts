@@ -9,10 +9,11 @@ import { environment } from 'src/environments/environment';
 })
 export class TestErrorComponent implements OnInit {
   private baseUrl = environment.apiUrl;
+  public validationErrors: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   get404Error() {
     this.http.get(this.baseUrl + 'products/42').subscribe(
@@ -53,6 +54,7 @@ export class TestErrorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.validationErrors = error.errors;
       }
     );
   }
