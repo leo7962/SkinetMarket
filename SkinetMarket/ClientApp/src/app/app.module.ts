@@ -12,6 +12,8 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { AppRoutes } from './routes';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent, CounterComponent, FetchDataComponent],
@@ -23,6 +25,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     HomeModule,
     RouterModule.forRoot(AppRoutes),
     BrowserAnimationsModule,
+    NgxSpinnerModule,
   ],
   providers: [
     {
@@ -30,7 +33,12 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
       useClass: ErrorInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

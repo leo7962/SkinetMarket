@@ -23,15 +23,18 @@
     "@angular/router": "10.2.1",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.5.3",
+    "bootswatch": "^4.5.3",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ngx-bootstrap": "^5.6.2",
+    "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.1.0",
     "oidc-client": "^1.9.1",
     "popper.js": "^1.16.0",
     "rxjs": "^6.6.3",
     "tslib": "^2.0.3",
+    "xng-breadcrumb": "^6.3.1",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
