@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using SkinetMarket.Extensions;
 using SkinetMarket.Helpers;
 using SkinetMarket.Middleware;
+using StackExchange.Redis;
 
 namespace SkinetMarket
 {
@@ -30,6 +31,12 @@ namespace SkinetMarket
             services.AddControllersWithViews();
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();
+            services.AddSingleton<IConnectionMultiplexer>(c =>
+            {
+                ConfigurationOptions configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
+
+                return ConnectionMultiplexer.Connect(configuration);
+            });
 
 
             // In production, the Angular files will be served from this directory
