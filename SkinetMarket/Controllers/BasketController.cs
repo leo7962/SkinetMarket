@@ -17,7 +17,7 @@ namespace SkinetMarket.Controllers
         [HttpGet]
         public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
         {
-            var basket = await _basketRepository.GetBasketAsync(id);
+            CustomerBasket basket = await _basketRepository.GetBasketAsync(id);
 
             return Ok(basket ?? new CustomerBasket(id));
         }
@@ -25,7 +25,7 @@ namespace SkinetMarket.Controllers
         [HttpPut]
         public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
         {
-            var updateBasket = await _basketRepository.UpdateBasketAsync(basket);
+            CustomerBasket updateBasket = await _basketRepository.UpdateBasketAsync(basket);
 
             return Ok(updateBasket);
         }
