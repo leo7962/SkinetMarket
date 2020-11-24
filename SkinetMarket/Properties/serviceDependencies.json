@@ -1,14 +1,16 @@
 {
   "dependencies": {
-    "appInsights1": {
-      "type": "appInsights"
-    },
-    "secrets1": {
-      "type": "secrets"
-    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "SkinetMarketServer"
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": null
+    },
+    "appInsights1": {
+      "type": "appInsights",
+      "connectionId": null
     }
   }
 }
