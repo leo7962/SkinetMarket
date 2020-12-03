@@ -58,7 +58,6 @@ namespace Infrastructure.Contexts
             }
             catch (Exception ex)
             {
-
                 ILogger<StoreContextSeed> logger = loggerFactory.CreateLogger<StoreContextSeed>();
                 logger.LogError(ex.Message);
             }

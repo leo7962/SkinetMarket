@@ -26,7 +26,6 @@ namespace SkinetMarket
                 }
                 catch (Exception ex)
                 {
-
                     ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
                     logger.LogError(ex, "An error occured during migration");
                 }
