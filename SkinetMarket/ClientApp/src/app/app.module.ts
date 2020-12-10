@@ -23,7 +23,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
     FormsModule,
     CoreModule,
     HomeModule,
-    RouterModule.forRoot(AppRoutes),
+    RouterModule.forRoot(AppRoutes, { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
     NgxSpinnerModule,
   ],
