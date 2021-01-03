@@ -6,7 +6,7 @@
         src="/assets/logo.png"
         style="max-height: 70px"
         alt="logo"
-        [routerLink]="['/']" 
+        [routerLink]="['/']"
       />
       <button
         button
@@ -26,20 +26,34 @@
           <li role="presentation" class="nav-item">
             <a
               class="nav-link"
-              [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions] ="{exact: true}"                
+              [routerLink]="['/']"
+              routerLinkActive="router-link-active"
+              [routerLinkActiveOptions]="{ exact: true }"
               >Home</a
             >
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" [routerLink]="['/shop']" routerLinkActive="router-link-active">Shop</a>
+            <a
+              class="nav-link"
+              [routerLink]="['/shop']"
+              routerLinkActive="router-link-active"
+              >Shop</a
+            >
           </li>
           <li role="presentation" class="nav-item">
-            <a class="nav-link" routerLink="/test-error" routerLinkActive="active">Errors</a>
+            <a
+              class="nav-link"
+              routerLink="/test-error"
+              routerLinkActive="active"
+              >Errors</a
+            >
           </li>
           <li role="presentation" class="nav-item">
-            <a class="position-relative" href="#">
-              <span class="cart-no">4</span>
+            <a routerLink="/basket" class="position-relative">
               <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
+              <div *ngIf="basket$ | async as basket" class="cart-no">
+                {{ basket.items.length }}
+              </div>
             </a>
           </li>
         </ul>

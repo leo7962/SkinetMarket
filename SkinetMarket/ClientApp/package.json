@@ -34,6 +34,7 @@
     "popper.js": "^1.16.0",
     "rxjs": "^6.6.3",
     "tslib": "^2.0.0",
+    "uuid": "^8.3.2",
     "xng-breadcrumb": "^6.5.0",
     "zone.js": "~0.10.3"
   },
@@ -44,7 +45,8 @@
     "@angular/language-service": "^11.0.5",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.8",
-    "@types/node": "^12.19.9",
+    "@types/node": "^12.19.11",
+    "@types/uuid": "^8.3.0",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

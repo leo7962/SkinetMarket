@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { BasketService } from './basket/basket.service';
 
 
 @Component({
@@ -9,9 +10,18 @@ export class AppComponent implements OnInit {
   title = 'SkinetMarket';
   private myAppUrl = '';
 
-  constructor(@Inject('BASE_URL') baseUrl: string) {
+  constructor(private basketService: BasketService, @Inject('BASE_URL') baseUrl: string) {
     this.myAppUrl = baseUrl;
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    const basketId = localStorage.getItem('basket_id');
+    if (basketId) {
+      this.basketService.getBasket(basketId).subscribe(() => {
+        console.log('Initialised basket');
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
 }
