@@ -16,12 +16,12 @@ namespace SkinetMarket
 {
     public class Startup
     {
+        private readonly IConfiguration Configuration;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -37,7 +37,6 @@ namespace SkinetMarket
 
                 return ConnectionMultiplexer.Connect(configuration);
             });
-
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
