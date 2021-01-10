@@ -1,5 +1,8 @@
+using Core.Models.Identity;
 using Infrastructure.Contexts;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +26,11 @@ namespace SkinetMarket
                     DataContext context = services.GetRequiredService<DataContext>();
                     await context.Database.MigrateAsync();
                     await StoreContextSeed.SeedAsync(context, loggerFactory);
+
+                    UserManager<AppUser> userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    AppIdentityDbContext identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    await identityContext.Database.MigrateAsync();
+                    await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
                 }
                 catch (Exception ex)
                 {

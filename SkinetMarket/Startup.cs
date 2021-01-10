@@ -1,5 +1,6 @@
 using AutoMapper;
 using Infrastructure.Contexts;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -28,8 +29,13 @@ namespace SkinetMarket
         {
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppIdentityDbContext>(x =>
+            {
+                x.UseSqlServer(Configuration.GetConnectionString("IdentityConnection"));
+            });
             services.AddControllersWithViews();
             services.AddApplicationServices();
+            services.AddIdentityServices(Configuration);
             services.AddSwaggerDocumentation();
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
@@ -62,6 +68,9 @@ namespace SkinetMarket
 
             app.UseRouting();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseSwaggerDocumentation();
 
