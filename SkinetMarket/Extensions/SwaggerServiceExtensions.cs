@@ -11,6 +11,29 @@ namespace SkinetMarket.Extensions
             services.AddSwaggerGen(x =>
             {
                 x.SwaggerDoc("v1", new OpenApiInfo { Title = "Skinet Market", Version = "v1" });
+
+                OpenApiSecurityScheme securitySchema = new OpenApiSecurityScheme
+                {
+                    Description = "JWT Auth Bearer Scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+
+                x.AddSecurityDefinition("Bearer", securitySchema);
+
+                OpenApiSecurityRequirement securityRequirement = new OpenApiSecurityRequirement
+                {
+                    {securitySchema, new[] { "Bearer"} }
+                };
+
+                x.AddSecurityRequirement(securityRequirement);
             });
 
             return services;

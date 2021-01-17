@@ -1,6 +1,8 @@
-﻿using Core.Interfaces;
+﻿using AutoMapper;
+using Core.Interfaces;
 using Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using SkinetMarket.Dtos;
 using System.Threading.Tasks;
 
 namespace SkinetMarket.Controllers
@@ -8,10 +10,12 @@ namespace SkinetMarket.Controllers
     public class BasketController : BaseApiController
     {
         private readonly IBasketRepository _basketRepository;
+        private readonly IMapper _mapper;
 
-        public BasketController(IBasketRepository basketRepository)
+        public BasketController(IBasketRepository basketRepository, IMapper mapper)
         {
             _basketRepository = basketRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,9 +27,11 @@ namespace SkinetMarket.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
+        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
         {
-            CustomerBasket updateBasket = await _basketRepository.UpdateBasketAsync(basket);
+            CustomerBasket customerBasket = _mapper.Map<CustomerBasketDto, CustomerBasket>(basket);
+
+            CustomerBasket updateBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
 
             return Ok(updateBasket);
         }
