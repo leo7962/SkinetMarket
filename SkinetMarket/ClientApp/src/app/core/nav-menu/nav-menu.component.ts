@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { BasketService } from "../../basket/basket.service";
-import { IBasket } from "../../shared/models/basket";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BasketService } from '../../basket/basket.service';
+import { IBasket } from '../../shared/models/basket';
 
 @Component({
-  selector: "app-nav-menu",
-  templateUrl: "./nav-menu.component.html",
-  styleUrls: ["./nav-menu.component.css"],
+  selector: 'app-nav-menu',
+  templateUrl: './nav-menu.component.html',
+  styleUrls: ['./nav-menu.component.css'],
 })
 export class NavMenuComponent implements OnInit {
   isExpanded = false;

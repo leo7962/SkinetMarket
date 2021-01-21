@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
-import { IBasket, IBasketItem } from "../shared/models/basket";
-import { BasketService } from "./basket.service";
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IBasket, IBasketItem } from '../shared/models/basket';
+import { BasketService } from './basket.service';
 
 @Component({
-  selector: "app-basket",
-  templateUrl: "./basket.component.html",
-  styleUrls: ["./basket.component.css"],
+  selector: 'app-basket',
+  templateUrl: './basket.component.html',
+  styleUrls: ['./basket.component.css'],
 })
 export class BasketComponent implements OnInit {
   basket$: Observable<IBasket>;

@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { IProduct } from "src/app/shared/models/product";
-import { ShopService } from "../shop.service";
-import { ActivatedRoute } from "@angular/router";
-import { BreadcrumbService } from "xng-breadcrumb";
-import { BasketService } from "../../basket/basket.service";
+import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/shared/models/product';
+import { ShopService } from '../shop.service';
+import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { BasketService } from '../../basket/basket.service';
 
 @Component({
-  selector: "app-product-details",
-  templateUrl: "./product-details.component.html",
-  styleUrls: ["./product-details.component.css"],
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
   product: IProduct;
@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
     private bcService: BreadcrumbService,
     private basketService: BasketService
   ) {
-    this.bcService.set("@productDetails", "");
+    this.bcService.set('@productDetails', '');
   }
 
   ngOnInit(): void {
@@ -43,11 +43,11 @@ export class ProductDetailsComponent implements OnInit {
 
   loadProduct() {
     this.shopService
-      .getProduct(+this.activateRoute.snapshot.paramMap.get("id"))
+      .getProduct(+this.activateRoute.snapshot.paramMap.get('id'))
       .subscribe(
         (product) => {
           this.product = product;
-          this.bcService.set("@productDetails", product.name);
+          this.bcService.set('@productDetails', product.name);
         },
         (error) => {
           console.log(error);

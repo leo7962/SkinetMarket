@@ -1,18 +1,18 @@
-import { Injectable } from "@angular/core";
-import { environment } from "../../environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 import {
   Basket,
   IBasket,
   IBasketItem,
   IBasketTotals,
-} from "../shared/models/basket";
-import { map } from "rxjs/operators";
-import { IProduct } from "../shared/models/product";
+} from '../shared/models/basket';
+import { map } from 'rxjs/operators';
+import { IProduct } from '../shared/models/product';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class BasketService {
   baseUrl = environment.apiUrl;
@@ -24,7 +24,7 @@ export class BasketService {
   constructor(private http: HttpClient) { }
 
   getBasket(id: string) {
-    return this.http.get(this.baseUrl + "basket?id=" + id).pipe(
+    return this.http.get(this.baseUrl + 'basket?id=' + id).pipe(
       map((basket: IBasket) => {
         this.basketSource.next(basket);
         this.calculateTotals();
@@ -33,7 +33,7 @@ export class BasketService {
   }
 
   setBasket(basket: IBasket) {
-    return this.http.put(this.baseUrl + "basket", basket).subscribe(
+    return this.http.put(this.baseUrl + 'basket', basket).subscribe(
       (response: IBasket) => {
         this.basketSource.next(response);
         this.calculateTotals();
@@ -92,11 +92,11 @@ export class BasketService {
   }
 
   deleteBasket(basket: IBasket) {
-    return this.http.delete(this.baseUrl + "basket?id=" + basket.id).subscribe(
+    return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe(
       () => {
         this.basketSource.next(null);
         this.basketTotalSource.next(null);
-        localStorage.removeItem("basket_id");
+        localStorage.removeItem('basket_id');
       },
       (error) => {
         console.log(error);
@@ -129,7 +129,7 @@ export class BasketService {
 
   private createBasket(): IBasket {
     const basket = new Basket();
-    localStorage.setItem("basket_id", basket.id);
+    localStorage.setItem('basket_id', basket.id);
     return basket;
   }
 

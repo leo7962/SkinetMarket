@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { NgxSpinnerService } from "ngx-spinner";
+import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class BusyService {
   busyRequestCount = 0;
@@ -12,9 +12,9 @@ export class BusyService {
   busy() {
     this.busyRequestCount++;
     this.spinnerService.show(undefined, {
-      type: "pacman",
-      bdColor: "rgba(255,255,255,0.8)",
-      color: "#6c7a7d",
+      type: 'pacman',
+      bdColor: 'rgba(255,255,255,0.8)',
+      color: '#6c7a7d',
     });
   }
 
