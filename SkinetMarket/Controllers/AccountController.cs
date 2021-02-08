@@ -8,6 +8,7 @@ using SkinetMarket.Dtos;
 using SkinetMarket.Errors;
 using SkinetMarket.Extensions;
 using System.Threading.Tasks;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace SkinetMarket.Controllers
 {
@@ -83,7 +84,7 @@ namespace SkinetMarket.Controllers
                 return Unauthorized(new ApiResponse(401));
             }
 
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
             if (!result.Succeeded)
             {
