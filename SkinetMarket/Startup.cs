@@ -1,4 +1,3 @@
-using AutoMapper;
 using Infrastructure.Contexts;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Builder;
