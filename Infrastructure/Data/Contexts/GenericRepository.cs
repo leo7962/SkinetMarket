@@ -1,12 +1,12 @@
-﻿using Core.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Core.Interfaces;
 using Core.Models;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Infrastructure.Contexts
+namespace Infrastructure.Data.Contexts
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {

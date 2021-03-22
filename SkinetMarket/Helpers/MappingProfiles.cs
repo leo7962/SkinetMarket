@@ -16,6 +16,7 @@ namespace SkinetMarket.Helpers
             CreateMap<Address, AddressDto>().ReverseMap();
             CreateMap<CustomerBasketDto, CustomerBasket>();
             CreateMap<BasketItemDto, BasketItem>();
+            CreateMap<AddressDto, Core.Models.OrderAggregate.Address>();
         }
     }
 }
