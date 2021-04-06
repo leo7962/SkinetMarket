@@ -16,11 +16,11 @@ namespace SkinetMarket
 {
     public class Startup
     {
-        private readonly IConfiguration Configuration;
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,18 +28,19 @@ namespace SkinetMarket
         {
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<AppIdentityDbContext>(x =>
             {
-                x.UseSqlServer(Configuration.GetConnectionString("IdentityConnection"));
+                x.UseSqlServer(_configuration.GetConnectionString("IdentityConnection"));
             });
             services.AddControllersWithViews();
             services.AddApplicationServices();
-            services.AddIdentityServices(Configuration);
+            services.AddIdentityServices(_configuration);
             services.AddSwaggerDocumentation();
-            services.AddSingleton<IConnectionMultiplexer>(c =>
+            services.AddSingleton<IConnectionMultiplexer>(_ =>
             {
-                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
+                var configuration =
+                    ConfigurationOptions.Parse(_configuration.GetConnectionString("Redis"), true);
 
                 return ConnectionMultiplexer.Connect(configuration);
             });
