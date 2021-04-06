@@ -1,6 +1,8 @@
 ﻿using Core.Models;
 using Core.Models.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -28,11 +30,11 @@ namespace Infrastructure.Data.Contexts
                 .HasColumnType("decimal(18,2)");
 
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.SqlServer")
-                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
                 {
-                    var propierties = entityType.ClrType.GetProperties().Where(p => p.PropertyType
+                    IEnumerable<PropertyInfo> propierties = entityType.ClrType.GetProperties().Where(p => p.PropertyType
                         == typeof(decimal));
-                    foreach (var propierty in propierties)
+                    foreach (PropertyInfo propierty in propierties)
                         modelBuilder.Entity(entityType.Name).Property(propierty.Name)
                             .HasConversion<double>();
                 }

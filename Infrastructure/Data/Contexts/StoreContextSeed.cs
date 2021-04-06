@@ -17,63 +17,63 @@ namespace Infrastructure.Data.Contexts
         {
             try
             {
-                var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
                 if (!context.ProductBrands.Any())
                 {
-                    var brandsData =
+                    string brandsData =
                         File.ReadAllText(
                             "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData//brands.json");
 
-                    var brands = JsonConvert.DeserializeObject<List<ProductBrand>>(brandsData);
+                    List<ProductBrand> brands = JsonConvert.DeserializeObject<List<ProductBrand>>(brandsData);
 
-                    foreach (var item in brands) context.ProductBrands.Add(item);
+                    foreach (ProductBrand item in brands) context.ProductBrands.Add(item);
 
                     await context.SaveChangesAsync();
                 }
 
                 if (!context.ProductTypes.Any())
                 {
-                    var typesData =
+                    string typesData =
                         File.ReadAllText(
                             "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData//types.json");
 
-                    var types = JsonConvert.DeserializeObject<List<ProductType>>(typesData);
+                    List<ProductType> types = JsonConvert.DeserializeObject<List<ProductType>>(typesData);
 
-                    foreach (var item in types) context.ProductTypes.Add(item);
+                    foreach (ProductType item in types) context.ProductTypes.Add(item);
 
                     await context.SaveChangesAsync();
                 }
 
                 if (!context.Products.Any())
                 {
-                    var productsData =
+                    string productsData =
                         File.ReadAllText(
                             "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData/Products.json");
 
-                    var products = JsonConvert.DeserializeObject<List<Product>>(productsData);
+                    List<Product> products = JsonConvert.DeserializeObject<List<Product>>(productsData);
 
-                    foreach (var item in products) context.Products.Add(item);
+                    foreach (Product item in products) context.Products.Add(item);
 
                     await context.SaveChangesAsync();
                 }
 
                 if (!context.DeliveryMethods.Any())
                 {
-                    var dmData =
+                    string dmData =
                         File.ReadAllText(
                             "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData/delivery.json");
 
-                    var methods = JsonConvert.DeserializeObject<List<DeliveryMethod>>(dmData);
+                    List<DeliveryMethod> methods = JsonConvert.DeserializeObject<List<DeliveryMethod>>(dmData);
 
-                    foreach (var item in methods) context.DeliveryMethods.Add(item);
+                    foreach (DeliveryMethod item in methods) context.DeliveryMethods.Add(item);
 
                     await context.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
             {
-                var logger = loggerFactory.CreateLogger<StoreContextSeed>();
+                ILogger<StoreContextSeed> logger = loggerFactory.CreateLogger<StoreContextSeed>();
                 logger.LogError(ex.Message);
             }
         }
