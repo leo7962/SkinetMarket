@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using AutoMapper;
 using Core.Interfaces;
 using Core.Models.OrderAggregate;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using SkinetMarket.Dtos;
 using SkinetMarket.Errors;
 using SkinetMarket.Extensions;
+using System.Threading.Tasks;
 
 namespace SkinetMarket.Controllers
 {

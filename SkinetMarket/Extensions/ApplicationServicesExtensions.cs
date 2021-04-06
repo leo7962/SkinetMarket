@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Infrastructure.Data.Contexts;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using SkinetMarket.Errors;
+using System.Linq;
 
 namespace SkinetMarket.Extensions
 {

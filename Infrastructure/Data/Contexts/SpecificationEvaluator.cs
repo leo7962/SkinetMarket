@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using Core.Models;
+﻿using Core.Models;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Infrastructure.Data.Contexts
 {

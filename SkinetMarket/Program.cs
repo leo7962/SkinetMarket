@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Core.Models.Identity;
 using Infrastructure.Data.Contexts;
 using Infrastructure.Identity;
@@ -9,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace SkinetMarket
 {

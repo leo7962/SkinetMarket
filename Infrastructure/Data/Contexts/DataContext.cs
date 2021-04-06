@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using System.Reflection;
-using Core.Models;
+﻿using Core.Models;
 using Core.Models.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Reflection;
 
 namespace Infrastructure.Data.Contexts
 {

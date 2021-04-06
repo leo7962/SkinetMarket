@@ -1,6 +1,6 @@
+using Core.Models.OrderAggregate;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core.Models.OrderAggregate;
 
 namespace Core.Interfaces
 {

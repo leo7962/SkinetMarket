@@ -39,7 +39,7 @@ namespace SkinetMarket
             services.AddSwaggerDocumentation();
             services.AddSingleton<IConnectionMultiplexer>(_ =>
             {
-                var configuration =
+                ConfigurationOptions configuration =
                     ConfigurationOptions.Parse(_configuration.GetConnectionString("Redis"), true);
 
                 return ConnectionMultiplexer.Connect(configuration);
