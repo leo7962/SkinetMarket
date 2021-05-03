@@ -16,25 +16,25 @@ namespace SkinetMarket
     {
         public static async Task Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope())
+            IHost host = CreateHostBuilder(args).Build();
+            using (IServiceScope scope = host.Services.CreateScope())
             {
-                var services = scope.ServiceProvider;
-                var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+                IServiceProvider services = scope.ServiceProvider;
+                ILoggerFactory loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    var context = services.GetRequiredService<DataContext>();
+                    DataContext context = services.GetRequiredService<DataContext>();
                     await context.Database.MigrateAsync();
                     await StoreContextSeed.SeedAsync(context, loggerFactory);
 
-                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
-                    var identityContext = services.GetRequiredService<AppIdentityDbContext>();
+                    UserManager<AppUser> userManager = services.GetRequiredService<UserManager<AppUser>>();
+                    AppIdentityDbContext identityContext = services.GetRequiredService<AppIdentityDbContext>();
                     await identityContext.Database.MigrateAsync();
                     await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
                 }
                 catch (Exception ex)
                 {
-                    var logger = loggerFactory.CreateLogger<Program>();
+                    ILogger<Program> logger = loggerFactory.CreateLogger<Program>();
                     logger.LogError(ex, "An error occured during migration");
                 }
             }
