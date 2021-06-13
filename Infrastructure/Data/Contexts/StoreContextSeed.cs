@@ -17,13 +17,13 @@ namespace Infrastructure.Data.Contexts
         {
             try
             {
-                string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
                 if (!context.ProductBrands.Any())
                 {
                     string brandsData =
                         File.ReadAllText(
-                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData//brands.json");
+                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/brands.json");
 
                     List<ProductBrand> brands = JsonConvert.DeserializeObject<List<ProductBrand>>(brandsData);
 
@@ -36,7 +36,7 @@ namespace Infrastructure.Data.Contexts
                 {
                     string typesData =
                         File.ReadAllText(
-                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData//types.json");
+                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/types.json");
 
                     List<ProductType> types = JsonConvert.DeserializeObject<List<ProductType>>(typesData);
 
@@ -49,7 +49,7 @@ namespace Infrastructure.Data.Contexts
                 {
                     string productsData =
                         File.ReadAllText(
-                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData/Products.json");
+                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/Products.json");
 
                     List<Product> products = JsonConvert.DeserializeObject<List<Product>>(productsData);
 
@@ -62,7 +62,7 @@ namespace Infrastructure.Data.Contexts
                 {
                     string dmData =
                         File.ReadAllText(
-                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/SeedData/delivery.json");
+                            "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/delivery.json");
 
                     List<DeliveryMethod> methods = JsonConvert.DeserializeObject<List<DeliveryMethod>>(dmData);
 
