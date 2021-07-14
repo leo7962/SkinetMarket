@@ -32,7 +32,7 @@
     "ngx-toastr": "^14.0.0",
     "oidc-client": "^1.11.5",
     "popper.js": "^1.16.0",
-    "rxjs": "^7.1.0",
+    "rxjs": "^6.5.3",
     "tslib": "^2.3.0",
     "uuid": "^8.3.2",
     "xng-breadcrumb": "^6.7.0",
