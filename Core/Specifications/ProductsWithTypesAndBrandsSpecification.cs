@@ -6,9 +6,10 @@ namespace Core.Specifications
     {
         public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productSpecParams)
             : base(x =>
-            (string.IsNullOrEmpty(productSpecParams.Search) || x.Name.ToLower().Contains(productSpecParams.Search)) &&
-            (!productSpecParams.BrandId.HasValue || x.ProductBrandId == productSpecParams.BrandId) &&
-            (!productSpecParams.TypeId.HasValue || x.ProductTypeId == productSpecParams.TypeId)
+                (string.IsNullOrEmpty(productSpecParams.Search) ||
+                 x.Name.ToLower().Contains(productSpecParams.Search)) &&
+                (!productSpecParams.BrandId.HasValue || x.ProductBrandId == productSpecParams.BrandId) &&
+                (!productSpecParams.TypeId.HasValue || x.ProductTypeId == productSpecParams.TypeId)
             )
         {
             AddInclude(x => x.ProductType);
@@ -17,7 +18,6 @@ namespace Core.Specifications
             ApplyPaging(productSpecParams.PageSize * (productSpecParams.PageIndex - 1), productSpecParams.PageSize);
 
             if (!string.IsNullOrEmpty(productSpecParams.Sort))
-            {
                 switch (productSpecParams.Sort)
                 {
                     case "priceAsc":
@@ -30,7 +30,6 @@ namespace Core.Specifications
                         AddOrderBy(n => n.Name);
                         break;
                 }
-            }
         }
 
         public ProductsWithTypesAndBrandsSpecification(int id) : base(x => x.Id == id)

@@ -11,7 +11,7 @@ namespace Infrastructure.Identity
         {
             if (!userManager.Users.Any())
             {
-                AppUser user = new AppUser
+                var user = new AppUser
                 {
                     DisplayName = "Bob",
                     Email = "bob@test.com",

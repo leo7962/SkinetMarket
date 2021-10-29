@@ -21,7 +21,7 @@ namespace SkinetMarket.Controllers
         [HttpGet]
         public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
         {
-            CustomerBasket basket = await _basketRepository.GetBasketAsync(id);
+            var basket = await _basketRepository.GetBasketAsync(id);
 
             return Ok(basket ?? new CustomerBasket(id));
         }
@@ -29,9 +29,9 @@ namespace SkinetMarket.Controllers
         [HttpPut]
         public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
         {
-            CustomerBasket customerBasket = _mapper.Map<CustomerBasketDto, CustomerBasket>(basket);
+            var customerBasket = _mapper.Map<CustomerBasketDto, CustomerBasket>(basket);
 
-            CustomerBasket updateBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
+            var updateBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
 
             return Ok(updateBasket);
         }

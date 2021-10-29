@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AccountService } from '../../account/account.service';
-import { BasketService } from '../../basket/basket.service';
-import { IBasket } from '../../shared/models/basket';
-import { IUser } from '../../shared/models/user';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AccountService} from '../../account/account.service';
+import {BasketService} from '../../basket/basket.service';
+import {IBasket} from '../../shared/models/basket';
+import {IUser} from '../../shared/models/user';
 
 @Component({
   selector: 'app-nav-menu',
@@ -15,7 +15,8 @@ export class NavMenuComponent implements OnInit {
   basket$: Observable<IBasket>;
   currentUser$: Observable<IUser>;
 
-  constructor(private basketService: BasketService, private accountService: AccountService) { }
+  constructor(private basketService: BasketService, private accountService: AccountService) {
+  }
 
   ngOnInit() {
     this.basket$ = this.basketService.basket$;

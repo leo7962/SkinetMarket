@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
-import { ProductItemComponent } from './product-item.component';
+import {ProductItemComponent} from './product-item.component';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -11,9 +11,9 @@ describe('ProductItemComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductItemComponent ]
+      declarations: [ProductItemComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

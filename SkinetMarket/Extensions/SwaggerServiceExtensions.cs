@@ -12,7 +12,7 @@ namespace SkinetMarket.Extensions
             {
                 x.SwaggerDoc("v1", new OpenApiInfo { Title = "Skinet Market", Version = "v1" });
 
-                OpenApiSecurityScheme securitySchema = new OpenApiSecurityScheme
+                var securitySchema = new OpenApiSecurityScheme
                 {
                     Description = "JWT Auth Bearer Scheme",
                     Name = "Authorization",
@@ -28,9 +28,9 @@ namespace SkinetMarket.Extensions
 
                 x.AddSecurityDefinition("Bearer", securitySchema);
 
-                OpenApiSecurityRequirement securityRequirement = new OpenApiSecurityRequirement
+                var securityRequirement = new OpenApiSecurityRequirement
                 {
-                    {securitySchema, new[] { "Bearer"} }
+                    { securitySchema, new[] { "Bearer" } }
                 };
 
                 x.AddSecurityRequirement(securityRequirement);
@@ -42,10 +42,7 @@ namespace SkinetMarket.Extensions
         public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet Market v1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet Market v1"); });
 
             return app;
         }

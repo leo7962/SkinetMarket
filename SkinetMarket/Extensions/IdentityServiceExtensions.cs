@@ -11,9 +11,10 @@ namespace SkinetMarket.Extensions
 {
     public static class IdentityServiceExtensions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services,
+            IConfiguration configuration)
         {
-            IdentityBuilder builder = services.AddIdentityCore<AppUser>();
+            var builder = services.AddIdentityCore<AppUser>();
 
             builder = new IdentityBuilder(builder.UserType, builder.Services);
             builder.AddEntityFrameworkStores<AppIdentityDbContext>();
@@ -27,7 +28,7 @@ namespace SkinetMarket.Extensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Token:Key"])),
                     ValidIssuer = configuration["Token:Issuer"],
                     ValidateIssuer = true,
-                    ValidateAudience = false,
+                    ValidateAudience = false
                 };
             });
 

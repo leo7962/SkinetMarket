@@ -21,12 +21,12 @@ namespace SkinetMarket.Extensions
             {
                 options.InvalidModelStateResponseFactory = actionContext =>
                 {
-                    string[] errors = actionContext.ModelState
+                    var errors = actionContext.ModelState
                         .Where(e => e.Value.Errors.Count > 0)
                         .SelectMany(x => x.Value.Errors)
                         .Select(x => x.ErrorMessage).ToArray();
 
-                    ApiValidationErrorResponse errorResponse = new ApiValidationErrorResponse
+                    var errorResponse = new ApiValidationErrorResponse
                     {
                         Errors = errors
                     };

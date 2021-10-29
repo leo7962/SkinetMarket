@@ -23,13 +23,13 @@ namespace Infrastructure.Data.Contexts
 
         public async Task<CustomerBasket> GetBasketAsync(string basketId)
         {
-            RedisValue data = await _connection.StringGetAsync(basketId);
+            var data = await _connection.StringGetAsync(basketId);
             return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
-            bool created =
+            var created =
                 await _connection.StringSetAsync(basket.Id, JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
             if (!created) return null;
 

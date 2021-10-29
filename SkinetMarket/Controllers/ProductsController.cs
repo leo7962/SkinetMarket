@@ -19,7 +19,9 @@ namespace SkinetMarket.Controllers
         private readonly IGenericRepository<ProductType> _productTypeRepo;
         private readonly IMapper _mapper;
 
-        public ProductsController(IGenericRepository<Product> productsRepo, IGenericRepository<ProductBrand> productBrandRepo, IGenericRepository<ProductType> productTypeRepo, IMapper mapper)
+        public ProductsController(IGenericRepository<Product> productsRepo,
+            IGenericRepository<ProductBrand> productBrandRepo, IGenericRepository<ProductType> productTypeRepo,
+            IMapper mapper)
         {
             _productsRepo = productsRepo;
             _productBrandRepo = productBrandRepo;
@@ -28,20 +30,22 @@ namespace SkinetMarket.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery] ProductSpecParams productSpecParams)
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
+            [FromQuery] ProductSpecParams productSpecParams)
         {
-            ProductsWithTypesAndBrandsSpecification spec = new ProductsWithTypesAndBrandsSpecification(productSpecParams);
+            var spec = new ProductsWithTypesAndBrandsSpecification(productSpecParams);
 
-            ProductWithFiltersForCountSpecification countSpec = new ProductWithFiltersForCountSpecification(productSpecParams);
+            var countSpec = new ProductWithFiltersForCountSpecification(productSpecParams);
 
-            int totalItems = await _productsRepo.CountAsync(countSpec);
+            var totalItems = await _productsRepo.CountAsync(countSpec);
 
-            IReadOnlyCollection<Product> products = await _productsRepo.ListAsync(spec);
+            var products = await _productsRepo.ListAsync(spec);
 
-            IReadOnlyList<ProductToReturnDto> data = _mapper
+            var data = _mapper
                 .Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>((IReadOnlyList<Product>)products);
 
-            return Ok(new Pagination<ProductToReturnDto>(productSpecParams.PageIndex, productSpecParams.PageSize, totalItems, data));
+            return Ok(new Pagination<ProductToReturnDto>(productSpecParams.PageIndex, productSpecParams.PageSize,
+                totalItems, data));
         }
 
         [HttpGet("{id}")]
@@ -49,14 +53,11 @@ namespace SkinetMarket.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id)
         {
-            ProductsWithTypesAndBrandsSpecification spec = new ProductsWithTypesAndBrandsSpecification(id);
+            var spec = new ProductsWithTypesAndBrandsSpecification(id);
 
-            Product product = await _productsRepo.GetEntityWithSpec(spec);
+            var product = await _productsRepo.GetEntityWithSpec(spec);
 
-            if (product == null)
-            {
-                return NotFound(new ApiResponse(404));
-            }
+            if (product == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Product, ProductToReturnDto>(product);
         }

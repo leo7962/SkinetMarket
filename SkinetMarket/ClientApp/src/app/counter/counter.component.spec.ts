@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { CounterComponent } from './counter.component';
+import {CounterComponent} from './counter.component';
 
 describe('CounterComponent', () => {
   let component: CounterComponent;
@@ -8,9 +8,9 @@ describe('CounterComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CounterComponent ]
+      declarations: [CounterComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
