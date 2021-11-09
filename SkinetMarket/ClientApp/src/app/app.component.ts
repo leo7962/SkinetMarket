@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { AccountService } from './account/account.service';
-import { BasketService } from './basket/basket.service';
+import {Component, OnInit, Inject} from '@angular/core';
+import {AccountService} from './account/account.service';
+import {BasketService} from './basket/basket.service';
 
 
 @Component({

@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { IProduct } from '../shared/models/product';
-import { ShopService } from './shop.service';
-import { IBrand } from '../shared/models/brand';
-import { IType } from '../shared/models/type';
-import { ShopParams } from '../shared/models/shopParams';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {IProduct} from '../shared/models/product';
+import {ShopService} from './shop.service';
+import {IBrand} from '../shared/models/brand';
+import {IType} from '../shared/models/type';
+import {ShopParams} from '../shared/models/shopParams';
 
 @Component({
   selector: 'app-shop',
@@ -11,19 +11,20 @@ import { ShopParams } from '../shared/models/shopParams';
   styleUrls: ['./shop.component.css'],
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search', { static: false }) searchTerm: ElementRef;
+  @ViewChild('search', {static: false}) searchTerm: ElementRef;
   products: IProduct[];
   brands: IBrand[];
   types: IType[];
   shopParams = new ShopParams();
   totalCount: number;
   sortOptions = [
-    { name: 'Alphabetical', value: 'name' },
-    { name: 'Price: Low to High', value: 'priceAsc' },
-    { name: 'Price: High to Low', value: 'priceDesc' },
+    {name: 'Alphabetical', value: 'name'},
+    {name: 'Price: Low to High', value: 'priceAsc'},
+    {name: 'Price: High to Low', value: 'priceDesc'},
   ];
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService) {
+  }
 
   ngOnInit() {
     this.getProducts();
@@ -48,7 +49,7 @@ export class ShopComponent implements OnInit {
   getBrands() {
     this.shopService.getBrands().subscribe(
       (response) => {
-        this.brands = [{ id: 0, name: 'All' }, ...response];
+        this.brands = [{id: 0, name: 'All'}, ...response];
       },
       (error) => {
         console.log(error);
@@ -59,7 +60,7 @@ export class ShopComponent implements OnInit {
   getTypes() {
     this.shopService.getTypes().subscribe(
       (response) => {
-        this.types = [{ id: 0, name: 'All' }, ...response];
+        this.types = [{id: 0, name: 'All'}, ...response];
       },
       (error) => {
         console.log(error);

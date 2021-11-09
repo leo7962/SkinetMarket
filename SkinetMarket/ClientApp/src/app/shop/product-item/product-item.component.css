@@ -1,13 +1,17 @@
 .btn {
   width: 30%;
-  height: 40px; }
+  height: 40px;
+}
 
 .image :hover {
-  opacity: 1; }
-  .image :hover button {
-    -webkit-transform: none;
-            transform: none;
-    opacity: 1; }
+  opacity: 1;
+}
+
+.image :hover button {
+  -webkit-transform: none;
+  transform: none;
+  opacity: 1;
+}
 
 .hover-overlay {
   position: absolute;
@@ -18,19 +22,27 @@
   background: rgba(255, 255, 255, 0.5);
   opacity: 0;
   -webkit-transition: all 0.5s;
-  transition: all 0.5s; }
-  .hover-overlay button {
-    z-index: 1000;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s; }
-  .hover-overlay button:first-of-type {
-    -webkit-transform: translatex(-20px);
-            transform: translatex(-20px); }
-  .hover-overlay button:last-of-type {
-    -webkit-transform: translateX(20px);
-            transform: translateX(20px); }
+  transition: all 0.5s;
+}
+
+.hover-overlay button {
+  z-index: 1000;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.hover-overlay button:first-of-type {
+  -webkit-transform: translatex(-20px);
+  transform: translatex(-20px);
+}
+
+.hover-overlay button:last-of-type {
+  -webkit-transform: translateX(20px);
+  transform: translateX(20px);
+}
 
 .featured {
-  height: 250px; }
+  height: 250px;
+}
 
 /*# sourceMappingURL=product-item.component.css.map */

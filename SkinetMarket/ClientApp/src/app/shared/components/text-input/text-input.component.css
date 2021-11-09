@@ -1,10 +1,12 @@
 .form-label-group {
   position: relative;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+}
 
 .form-label-group > input,
 .form-label-group > label {
-  padding: var(--input-padding-y) var(--input-padding-x); }
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
 
 .form-label-group > label {
   position: absolute;
@@ -19,35 +21,43 @@
   border: 1px solid transparent;
   border-radius: .25rem;
   -webkit-transition: all .1s ease-in-out;
-  transition: all .1s ease-in-out; }
+  transition: all .1s ease-in-out;
+}
 
 .form-label-group input::-webkit-input-placeholder {
-  color: transparent; }
+  color: transparent;
+}
 
 .form-label-group input:-ms-input-placeholder {
-  color: transparent; }
+  color: transparent;
+}
 
 .form-label-group input::-ms-input-placeholder {
-  color: transparent; }
+  color: transparent;
+}
 
 .form-label-group input::placeholder {
-  color: transparent; }
+  color: transparent;
+}
 
 .form-label-group input:not(:placeholder-shown) {
   padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-  padding-bottom: calc(var(--input-padding-y) / 3); }
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
 
 .form-label-group input:not(:placeholder-shown) ~ label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
-  color: #777; }
+  color: #777;
+}
 
 .loader {
   position: absolute;
   width: auto;
   top: 15px;
   right: 10px;
-  margin-top: 0; }
+  margin-top: 0;
+}
 
 /*# sourceMappingURL=text-input.component.css.map */

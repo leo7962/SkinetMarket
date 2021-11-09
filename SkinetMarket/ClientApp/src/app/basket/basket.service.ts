@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject} from 'rxjs';
 import {
   Basket,
   IBasket,
   IBasketItem,
   IBasketTotals,
 } from '../shared/models/basket';
-import { map } from 'rxjs/operators';
-import { IProduct } from '../shared/models/product';
+import {map} from 'rxjs/operators';
+import {IProduct} from '../shared/models/product';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,8 @@ export class BasketService {
   private basketTotalSource = new BehaviorSubject<IBasketTotals>(null);
   basketTotal$ = this.basketTotalSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getBasket(id: string) {
     return this.http.get(this.baseUrl + 'basket?id=' + id).pipe(
@@ -109,7 +110,7 @@ export class BasketService {
     const shipping = 0;
     const subtotal = basket.items.reduce((a, b) => b.price * b.quantity + a, 0);
     const total = subtotal + shipping;
-    this.basketTotalSource.next({ shipping, total, subtotal });
+    this.basketTotalSource.next({shipping, total, subtotal});
   }
 
   private addOrUpdateItem(

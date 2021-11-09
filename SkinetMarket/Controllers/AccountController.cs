@@ -19,7 +19,8 @@ namespace SkinetMarket.Controllers
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService, IMapper mapper)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
+            ITokenService tokenService, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -31,7 +32,7 @@ namespace SkinetMarket.Controllers
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            AppUser user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
             return new UserDto
             {
@@ -51,7 +52,7 @@ namespace SkinetMarket.Controllers
         [HttpGet("address")]
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
-            AppUser user = await _userManager.FindByUserByClaimsPrincipalEmailWithAddressAsync(HttpContext.User);
+            var user = await _userManager.FindByUserByClaimsPrincipalEmailWithAddressAsync(HttpContext.User);
 
             return _mapper.Map<Address, AddressDto>(user.Address);
         }
@@ -60,16 +61,13 @@ namespace SkinetMarket.Controllers
         [HttpPut("address")]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
-            AppUser user = await _userManager.FindByUserByClaimsPrincipalEmailWithAddressAsync(HttpContext.User);
+            var user = await _userManager.FindByUserByClaimsPrincipalEmailWithAddressAsync(HttpContext.User);
 
             user.Address = _mapper.Map<AddressDto, Address>(address);
 
-            IdentityResult result = await _userManager.UpdateAsync(user);
+            var result = await _userManager.UpdateAsync(user);
 
-            if (result.Succeeded)
-            {
-                return Ok(_mapper.Map<Address, AddressDto>(user.Address));
-            }
+            if (result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
 
             return BadRequest("Problem updating the user");
         }
@@ -77,19 +75,13 @@ namespace SkinetMarket.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            AppUser user = await _userManager.FindByEmailAsync(loginDto.Email);
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
-            if (user == null)
-            {
-                return Unauthorized(new ApiResponse(401));
-            }
+            if (user == null) return Unauthorized(new ApiResponse(401));
 
-            SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
-            if (!result.Succeeded)
-            {
-                return Unauthorized(new ApiResponse(401));
-            }
+            if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
             return new UserDto
             {
@@ -103,23 +95,19 @@ namespace SkinetMarket.Controllers
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
-            {
-                return new BadRequestObjectResult(new ApiValidationErrorResponse { Errors = new[] { "Email address is in use" } });
-            }
+                return new BadRequestObjectResult(new ApiValidationErrorResponse
+                    { Errors = new[] { "Email address is in use" } });
 
-            AppUser user = new AppUser
+            var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
                 Email = registerDto.Email,
                 UserName = registerDto.Email
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user, registerDto.Password);
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            if (!result.Succeeded)
-            {
-                return BadRequest(new ApiResponse(400));
-            }
+            if (!result.Succeeded) return BadRequest(new ApiResponse(400));
 
             return new UserDto
             {

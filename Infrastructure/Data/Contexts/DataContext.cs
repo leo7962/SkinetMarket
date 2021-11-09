@@ -30,11 +30,11 @@ namespace Infrastructure.Data.Contexts
                 .HasColumnType("decimal(18,2)");
 
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.SqlServer")
-                foreach (IMutableEntityType entityType in modelBuilder.Model.GetEntityTypes())
+                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
                 {
-                    IEnumerable<PropertyInfo> propierties = entityType.ClrType.GetProperties().Where(p => p.PropertyType
+                    var propierties = entityType.ClrType.GetProperties().Where(p => p.PropertyType
                         == typeof(decimal));
-                    foreach (PropertyInfo propierty in propierties)
+                    foreach (var propierty in propierties)
                         modelBuilder.Entity(entityType.Name).Property(propierty.Name)
                             .HasConversion<double>();
                 }

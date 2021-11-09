@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { IProduct } from 'src/app/shared/models/product';
-import { ShopService } from '../shop.service';
-import { ActivatedRoute } from '@angular/router';
-import { BreadcrumbService } from 'xng-breadcrumb';
-import { BasketService } from '../../basket/basket.service';
+import {Component, OnInit} from '@angular/core';
+import {IProduct} from 'src/app/shared/models/product';
+import {ShopService} from '../shop.service';
+import {ActivatedRoute} from '@angular/router';
+import {BreadcrumbService} from 'xng-breadcrumb';
+import {BasketService} from '../../basket/basket.service';
 
 @Component({
   selector: 'app-product-details',

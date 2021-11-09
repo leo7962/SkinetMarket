@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import {Component, OnInit, Inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {environment} from 'src/environments/environment';
 
 @Component({
   selector: 'app-test-error',
@@ -11,9 +11,11 @@ export class TestErrorComponent implements OnInit {
   private baseUrl = environment.apiUrl;
   public validationErrors: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   get404Error() {
     this.http.get(this.baseUrl + 'products/42').subscribe(
@@ -47,6 +49,7 @@ export class TestErrorComponent implements OnInit {
       }
     );
   }
+
   get400ValidationError() {
     this.http.get(this.baseUrl + 'products/fortytwo').subscribe(
       (response) => {

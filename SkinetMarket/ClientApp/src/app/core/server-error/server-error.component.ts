@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-server-error',
@@ -18,5 +18,6 @@ export class ServerErrorComponent implements OnInit {
       navigation.extras.state.error;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }
