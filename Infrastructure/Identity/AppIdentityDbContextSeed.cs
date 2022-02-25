@@ -1,34 +1,33 @@
-﻿using Core.Models.Identity;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Core.Models.Identity;
+using Microsoft.AspNetCore.Identity;
 
-namespace Infrastructure.Identity
+namespace Infrastructure.Identity;
+
+public class AppIdentityDbContextSeed
 {
-    public class AppIdentityDbContextSeed
+    public static async Task SeedUsersAsync(UserManager<AppUser> userManager)
     {
-        public static async Task SeedUsersAsync(UserManager<AppUser> userManager)
+        if (!userManager.Users.Any())
         {
-            if (!userManager.Users.Any())
+            var user = new AppUser
             {
-                var user = new AppUser
+                DisplayName = "Bob",
+                Email = "bob@test.com",
+                UserName = "bob@test.com",
+                Address = new Address
                 {
-                    DisplayName = "Bob",
-                    Email = "bob@test.com",
-                    UserName = "bob@test.com",
-                    Address = new Address
-                    {
-                        FirstName = "Bob",
-                        LastName = "Bobbity",
-                        Street = "10 the Street",
-                        City = "New York",
-                        State = "NY",
-                        ZipCode = "90210"
-                    }
-                };
+                    FirstName = "Bob",
+                    LastName = "Bobbity",
+                    Street = "10 the Street",
+                    City = "New York",
+                    State = "NY",
+                    ZipCode = "90210"
+                }
+            };
 
-                await userManager.CreateAsync(user, "Pa$$w0rd");
-            }
+            await userManager.CreateAsync(user, "Pa$$w0rd");
         }
     }
 }

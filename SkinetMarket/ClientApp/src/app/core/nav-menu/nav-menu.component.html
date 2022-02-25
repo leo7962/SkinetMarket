@@ -1,40 +1,40 @@
 <header>
   <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
     <div class="container">
-      <img class="navbar-brand"
-           src="/assets/logo.png"
-           style="max-height: 70px"
+      <img [routerLink]="['/']"
            alt="logo"
-           [routerLink]="['/']"/>
-      <button button
-              data-toggle="collapse"
-              class="navbar-toggler"
+           class="navbar-brand"
+           src="/assets/logo.png"
+           style="max-height: 70px"/>
+      <button (click)="toggle()"
               [attr.aria-expanded]="isExpanded"
-              (click)="toggle()">
+              button
+              class="navbar-toggler"
+              data-toggle="collapse">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse"
-           id="navcol-1"
-           [ngClass]="{ show: isExpanded }">
+      <div [ngClass]="{ show: isExpanded }"
+           class="collapse navbar-collapse"
+           id="navcol-1">
         <ul class="nav navbar-nav ml-auto">
-          <li role="presentation" class="nav-item">
-            <a class="nav-link"
+          <li class="nav-item" role="presentation">
+            <a [routerLinkActiveOptions]="{ exact: true }"
                [routerLink]="['/']"
-               routerLinkActive="router-link-active"
-               [routerLinkActiveOptions]="{ exact: true }">Home</a>
+               class="nav-link"
+               routerLinkActive="router-link-active">Home</a>
           </li>
-          <li role="presentation" class="nav-item">
-            <a class="nav-link"
-               [routerLink]="['/shop']"
+          <li class="nav-item" role="presentation">
+            <a [routerLink]="['/shop']"
+               class="nav-link"
                routerLinkActive="router-link-active">Shop</a>
           </li>
-          <li role="presentation" class="nav-item">
+          <li class="nav-item" role="presentation">
             <a class="nav-link"
                routerLink="/test-error"
                routerLinkActive="active">Errors</a>
           </li>
-          <li role="presentation" class="nav-item">
-            <a routerLink="/basket" class="position-relative">
+          <li class="nav-item" role="presentation">
+            <a class="position-relative" routerLink="/basket">
               <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
               <div *ngIf="basket$ | async" class="cart-no">
                 {{ (basket$ | async).items.length }}
@@ -44,30 +44,30 @@
         </ul>
         <ng-container *ngIf="(currentUser$ | async) === null">
           <span class="navbar-text actions">
-            <a routerLink="/account/login"
-               class="btn btn-light action-button"
-               role="button">login</a>
+            <a class="btn btn-light action-button"
+               role="button"
+               routerLink="/account/login">login</a>
           </span>
           <span class="navbar-text actions">
-            <a routerLink="/account/register"
-               class="btn btn-light action-button"
-               role="button">Sign up</a>
+            <a class="btn btn-light action-button"
+               role="button"
+               routerLink="/account/register">Sign up</a>
           </span>
         </ng-container>
         <ng-container *ngIf="currentUser$ | async">
           <div class="dropdown ml-3 mr-5" dropdown>
-            <a class="dropdown-toggle" style="cursor: pointer" dropdownToggle>
+            <a class="dropdown-toggle" dropdownToggle style="cursor: pointer">
               <strong>Welcome {{ (currentUser$ | async).displayName }}</strong>
             </a>
-            <div class="dropdown-menu dropdow-menu-right"
-                 style="cursor: pointer"
-                 *dropdownMenu>
-              <a routerLink="/basket"
-                 class="dropdown-item d-flex align-items-center py-2">
+            <div *dropdownMenu
+                 class="dropdown-menu dropdow-menu-right"
+                 style="cursor: pointer">
+              <a class="dropdown-item d-flex align-items-center py-2"
+                 routerLink="/basket">
                 <i class="fa fa-shopping-cart mr-3"></i> View Basket
               </a>
-              <a routerLink="/orders"
-                 class="dropdown-item d-flex align-items-center py-2">
+              <a class="dropdown-item d-flex align-items-center py-2"
+                 routerLink="/orders">
                 <i class="fa fa-history mr-3"></i> View Orders
               </a>
               <div class="dropdown-divider"></div>

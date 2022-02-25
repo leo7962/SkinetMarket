@@ -12,7 +12,7 @@
           class="btn btn-outline-primary mr-3">
     Test 400 validation Error
   </button>
-  <div class="row mt-5" *ngIf="validationErrors">
+  <div *ngIf="validationErrors" class="row mt-5">
     <ul class="text-danger">
       <li *ngFor="let error of validationErrors">{{ error }}</li>
     </ul>

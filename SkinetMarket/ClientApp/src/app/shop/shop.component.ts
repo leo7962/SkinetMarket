@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {IProduct} from '../shared/models/product';
 import {ShopService} from './shop.service';
 import {IBrand} from '../shared/models/brand';

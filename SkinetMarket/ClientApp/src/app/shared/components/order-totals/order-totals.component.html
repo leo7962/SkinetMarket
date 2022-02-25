@@ -5,7 +5,7 @@
   <p class="font-italic mb-4">
     shipping costs will be added depending on choices made during checkout
   </p>
-  <ul class="list-unstyled mb-4" *ngIf="basketTotal$ | async">
+  <ul *ngIf="basketTotal$ | async" class="list-unstyled mb-4">
     <li class="d-flex justify-content-between py-3 border-bottom">
       <strong class="text-muted">Order subtotal</strong>
       <strong>{{ (basketTotal$ | async).subtotal | currency }}</strong>

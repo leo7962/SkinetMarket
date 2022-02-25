@@ -1,9 +1,9 @@
 <div class="container mt-5">
-  <div class="row" *ngIf="product">
+  <div *ngIf="product" class="row">
     <div class="col-6">
-      <img src="{{ product.pictureUrl }}"
-           alt="{{ product.name }}"
-           class="img-fluid w-100"/>
+      <img alt="{{ product.name }}"
+           class="img-fluid w-100"
+           src="{{ product.pictureUrl }}"/>
     </div>
     <div class="col-6">
       <h3>{{ product.name }}</h3>

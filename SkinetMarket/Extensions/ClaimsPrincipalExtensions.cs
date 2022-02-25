@@ -1,12 +1,11 @@
 using System.Security.Claims;
 
-namespace SkinetMarket.Extensions
+namespace SkinetMarket.Extensions;
+
+public static class ClaimsPrincipalExtensions
 {
-    public static class ClaimsPrincipalExtensions
+    public static string RetrieveEmailFromPrincipal(this ClaimsPrincipal user)
     {
-        public static string RetrieveEmailFromPrincipal(this ClaimsPrincipal user)
-        {
-            return user.FindFirstValue(ClaimTypes.Email);
-        }
+        return user.FindFirstValue(ClaimTypes.Email);
     }
 }

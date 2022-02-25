@@ -1,14 +1,13 @@
 using System.Runtime.Serialization;
 
-namespace Core.Models.OrderAggregate
+namespace Core.Models.OrderAggregate;
+
+public enum OrderStatus
 {
-    public enum OrderStatus
-    {
-        [EnumMember(Value = "Pending")] Pending,
+    [EnumMember(Value = "Pending")] Pending,
 
-        [EnumMember(Value = "Payment Received")]
-        PaymentRecevied,
+    [EnumMember(Value = "Payment Received")]
+    PaymentRecevied,
 
-        [EnumMember(Value = "Payment Failed")] PaymentFailed
-    }
+    [EnumMember(Value = "Payment Failed")] PaymentFailed
 }

@@ -1,12 +1,11 @@
-﻿using Core.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Core.Models;
 
-namespace Core.Interfaces
+namespace Core.Interfaces;
+
+public interface IBasketRepository
 {
-    public interface IBasketRepository
-    {
-        Task<CustomerBasket> GetBasketAsync(string basketId);
-        Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket);
-        Task<bool> DeleteBasketAsync(string basketId);
-    }
+    Task<CustomerBasket> GetBasketAsync(string basketId);
+    Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket);
+    Task<bool> DeleteBasketAsync(string basketId);
 }

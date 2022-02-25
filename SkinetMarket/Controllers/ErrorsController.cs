@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SkinetMarket.Errors;
 
-namespace SkinetMarket.Controllers
+namespace SkinetMarket.Controllers;
+
+[Route("errors/{code}")]
+[ApiExplorerSettings(IgnoreApi = true)]
+public class ErrorsController : BaseApiController
 {
-    [Route("errors/{code}")]
-    [ApiExplorerSettings(IgnoreApi = true)]
-    public class ErrorsController : BaseApiController
+    public IActionResult Error(int code)
     {
-        public IActionResult Error(int code)
-        {
-            return new ObjectResult(new ApiResponse(code));
-        }
+        return new ObjectResult(new ApiResponse(code));
     }
 }

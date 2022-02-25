@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {AccountService} from './account/account.service';
 import {BasketService} from './basket/basket.service';
 

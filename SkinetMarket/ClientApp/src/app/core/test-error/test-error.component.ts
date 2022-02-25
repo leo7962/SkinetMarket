@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
 
@@ -8,8 +8,8 @@ import {environment} from 'src/environments/environment';
   styleUrls: ['./test-error.component.css'],
 })
 export class TestErrorComponent implements OnInit {
-  private baseUrl = environment.apiUrl;
   public validationErrors: any;
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {
   }

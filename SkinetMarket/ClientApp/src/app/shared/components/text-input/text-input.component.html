@@ -1,5 +1,8 @@
 <div class="form-label-group">
-  <input [ngClass]="
+  <input #input
+         (blur)="onTouched()"
+         (input)="onChange($event.target.value)"
+         [ngClass]="
       controlDir && controlDir.control && controlDir.control.touched
         ? !controlDir.control.valid
           ? 'is-invalid'
@@ -7,11 +10,8 @@
         : null
     "
          [type]="type"
-         (input)="onChange($event.target.value)"
-         (blur)="onTouched()"
-         id="{{ label }}"
-         #input
          class="form-control"
+         id="{{ label }}"
          placeholder="{{ label }}"/>
   <div *ngIf="
       controlDir &&
@@ -19,24 +19,24 @@
       controlDir.control.status === 'PENDING'
     "
        class="fa fa-spinner fa-spin loader"></div>
-  <label for="{{ label }}" class="visually-hidden">{{ label }}</label>
-  <div class="invalid-feedback"
-       *ngIf="
+  <label class="visually-hidden" for="{{ label }}">{{ label }}</label>
+  <div *ngIf="
       controlDir &&
       controlDir.control &&
       !controlDir.control.valid &&
       controlDir.control.touched
-    ">
+    "
+       class="invalid-feedback">
     <span *ngIf="controlDir.control.errors?.required">{{ label }} is required</span>
     <span *ngIf="controlDir.control.errors?.pattern">Invalid email address</span>
   </div>
-  <div class="invalid-feedback d-block"
-       *ngIf="
+  <div *ngIf="
       controlDir &&
       controlDir.control &&
       !controlDir.control.valid &&
       controlDir.control.dirty
-    ">
+    "
+       class="invalid-feedback d-block">
     <span *ngIf="controlDir.control.errors?.emailExists">Email address is in use</span>
   </div>
 </div>
