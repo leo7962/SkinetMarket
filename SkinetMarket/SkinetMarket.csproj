@@ -30,7 +30,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.2">
+        <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -56,6 +56,11 @@
 
     <ItemGroup>
         <TypeScriptCompile Include="ClientApp\src\app-routing.ts"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="ClientApp\.angular\cache\13.3.0\angular-webpack\2f1c19239177a960d0ca4119ef2459fafcc471b8"/>
+        <Folder Include="ClientApp\.angular\cache\13.3.0\babel-webpack"/>
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
