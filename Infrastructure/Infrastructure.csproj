@@ -11,7 +11,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3"/>
         <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.16.0"/>
-        <PackageReference Include="StackExchange.Redis" Version="2.5.43"/>
+        <PackageReference Include="StackExchange.Redis" Version="2.5.61"/>
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0"/>
     </ItemGroup>
 
