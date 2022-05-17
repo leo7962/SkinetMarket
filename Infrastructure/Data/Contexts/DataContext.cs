@@ -27,14 +27,13 @@ public class DataContext : DbContext
             .Property(o => o.Subtotal)
             .HasColumnType("decimal(18,2)");
 
-        if (Database.ProviderName == "Microsoft.EntityFrameworkCore.SqlServer")
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-            {
-                var propierties = entityType.ClrType.GetProperties().Where(p => p.PropertyType
-                    == typeof(decimal));
-                foreach (var propierty in propierties)
-                    modelBuilder.Entity(entityType.Name).Property(propierty.Name)
-                        .HasConversion<double>();
-            }
+        if (Database.ProviderName != "Microsoft.EntityFrameworkCore.SqlServer") return;
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            var propierties = entityType.ClrType.GetProperties().Where(p => p.PropertyType == typeof(decimal));
+            foreach (var propierty in propierties)
+                modelBuilder.Entity(entityType.Name).Property(propierty.Name)
+                    .HasConversion<double>();
+        }
     }
 }

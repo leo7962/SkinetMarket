@@ -23,7 +23,7 @@ public class StoreContextSeed
             {
                 var brandsData =
                     File.ReadAllText(
-                        "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/brands.json");
+                        "C:/Users/Ingen/RiderProjects/SkinetMarket/Infrastructure/Data/SeedData/brands.json");
 
                 var brands = JsonConvert.DeserializeObject<List<ProductBrand>>(brandsData);
 
@@ -36,7 +36,7 @@ public class StoreContextSeed
             {
                 var typesData =
                     File.ReadAllText(
-                        "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/types.json");
+                        "C:/Users/Ingen/RiderProjects/SkinetMarket/Infrastructure/Data/SeedData/types.json");
 
                 var types = JsonConvert.DeserializeObject<List<ProductType>>(typesData);
 
@@ -49,7 +49,7 @@ public class StoreContextSeed
             {
                 var productsData =
                     File.ReadAllText(
-                        "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/Products.json");
+                        "C:/Users/Ingen/RiderProjects/SkinetMarket/Infrastructure/Data/SeedData/Products.json");
 
                 var products = JsonConvert.DeserializeObject<List<Product>>(productsData);
 
@@ -62,7 +62,7 @@ public class StoreContextSeed
             {
                 var dmData =
                     File.ReadAllText(
-                        "C:/Users/Ingen/source/repos/SkinetMarket/Infrastructure/Data/SeedData/delivery.json");
+                        "C:/Users/Ingen/RiderProjects/SkinetMarket/Infrastructure/Data/SeedData/delivery.json");
 
                 var methods = JsonConvert.DeserializeObject<List<DeliveryMethod>>(dmData);
 
