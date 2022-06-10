@@ -61,6 +61,10 @@
     <ItemGroup>
         <Folder Include="ClientApp\.angular\cache\13.3.0\angular-webpack\2f1c19239177a960d0ca4119ef2459fafcc471b8" />
         <Folder Include="ClientApp\.angular\cache\13.3.0\babel-webpack" />
+        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\144ed203d61b5dbb73050916cff746a7c6d65cbd" />
+        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\23fd28c627b2e31e4ab64c4a032c4380d0dad9eb" />
+        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\77f87bed6bf6de8a524477559f4193945bbaf142" />
+        <Folder Include="ClientApp\.angular\cache\13.3.3\babel-webpack" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
