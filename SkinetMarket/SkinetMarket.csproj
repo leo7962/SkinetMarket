@@ -19,14 +19,14 @@
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
         <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
         <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.20.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
-        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.5" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.6">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
@@ -65,6 +65,9 @@
         <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\23fd28c627b2e31e4ab64c4a032c4380d0dad9eb" />
         <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\77f87bed6bf6de8a524477559f4193945bbaf142" />
         <Folder Include="ClientApp\.angular\cache\13.3.3\babel-webpack" />
+        <Folder Include="ClientApp\.angular\cache\14.0.1\angular-webpack\1843326ab25b0371f1dbaf55e13bc74a1172dc6d" />
+        <Folder Include="ClientApp\.angular\cache\14.0.1\angular-webpack\d824a087d48f0ffaf64a761746d2eb580eeca5cf" />
+        <Folder Include="ClientApp\.angular\cache\14.0.1\babel-webpack" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
