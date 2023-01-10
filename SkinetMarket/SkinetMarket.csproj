@@ -16,12 +16,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
-        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.21.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2" />
-        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="7.0.2" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0"/>
+        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0"/>
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.21.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -34,62 +34,62 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.4.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.4.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
-        <Content Remove="$(SpaRoot)**" />
-        <None Remove="$(SpaRoot)**" />
-        <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+        <Content Remove="$(SpaRoot)**"/>
+        <None Remove="$(SpaRoot)**"/>
+        <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="ClientApp\src\app-routing.ts" />
+        <None Remove="ClientApp\src\app-routing.ts"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Core\Core.csproj" />
-        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+        <ProjectReference Include="..\Core\Core.csproj"/>
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <TypeScriptCompile Include="ClientApp\src\app-routing.ts" />
+        <TypeScriptCompile Include="ClientApp\src\app-routing.ts"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="ClientApp\.angular\cache\13.3.0\angular-webpack\2f1c19239177a960d0ca4119ef2459fafcc471b8" />
-        <Folder Include="ClientApp\.angular\cache\13.3.0\babel-webpack" />
-        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\144ed203d61b5dbb73050916cff746a7c6d65cbd" />
-        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\23fd28c627b2e31e4ab64c4a032c4380d0dad9eb" />
-        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\77f87bed6bf6de8a524477559f4193945bbaf142" />
-        <Folder Include="ClientApp\.angular\cache\13.3.3\babel-webpack" />
-        <Folder Include="ClientApp\.angular\cache\14.0.1\angular-webpack\1843326ab25b0371f1dbaf55e13bc74a1172dc6d" />
-        <Folder Include="ClientApp\.angular\cache\14.0.1\angular-webpack\d824a087d48f0ffaf64a761746d2eb580eeca5cf" />
-        <Folder Include="ClientApp\.angular\cache\14.0.1\babel-webpack" />
+        <Folder Include="ClientApp\.angular\cache\13.3.0\angular-webpack\2f1c19239177a960d0ca4119ef2459fafcc471b8"/>
+        <Folder Include="ClientApp\.angular\cache\13.3.0\babel-webpack"/>
+        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\144ed203d61b5dbb73050916cff746a7c6d65cbd"/>
+        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\23fd28c627b2e31e4ab64c4a032c4380d0dad9eb"/>
+        <Folder Include="ClientApp\.angular\cache\13.3.3\angular-webpack\77f87bed6bf6de8a524477559f4193945bbaf142"/>
+        <Folder Include="ClientApp\.angular\cache\13.3.3\babel-webpack"/>
+        <Folder Include="ClientApp\.angular\cache\14.0.1\angular-webpack\1843326ab25b0371f1dbaf55e13bc74a1172dc6d"/>
+        <Folder Include="ClientApp\.angular\cache\14.0.1\angular-webpack\d824a087d48f0ffaf64a761746d2eb580eeca5cf"/>
+        <Folder Include="ClientApp\.angular\cache\14.0.1\babel-webpack"/>
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
         <!-- Ensure Node.js is installed -->
         <Exec Command="node --version" ContinueOnError="true">
-            <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
         </Exec>
-        <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
-        <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
-        <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+        <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE."/>
+        <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..."/>
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm install"/>
     </Target>
 
     <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
         <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-        <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-        <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
-        <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm install"/>
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod"/>
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' "/>
 
         <!-- Include the newly-built files in the publish output -->
         <ItemGroup>
-            <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
-            <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+            <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**"/>
+            <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'"/>
             <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
                 <RelativePath>%(DistFiles.Identity)</RelativePath>
                 <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -100,24 +100,24 @@
 
     <ProjectExtensions>
         <VisualStudio>
-            <UserProperties clientapp_4package_1json__JsonSchema="" />
+            <UserProperties clientapp_4package_1json__JsonSchema=""/>
         </VisualStudio>
     </ProjectExtensions>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <TypeScriptTarget>ES5</TypeScriptTarget>
         <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
-        <TypeScriptModuleKind />
+        <TypeScriptModuleKind/>
         <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
         <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
         <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
-        <TypeScriptOutFile />
-        <TypeScriptOutDir />
+        <TypeScriptOutFile/>
+        <TypeScriptOutDir/>
         <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
         <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
         <TypeScriptSourceMap>True</TypeScriptSourceMap>
-        <TypeScriptMapRoot />
-        <TypeScriptSourceRoot />
+        <TypeScriptMapRoot/>
+        <TypeScriptSourceRoot/>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

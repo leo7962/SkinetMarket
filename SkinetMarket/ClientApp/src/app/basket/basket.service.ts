@@ -19,6 +19,27 @@ export class BasketService {
   constructor(private http: HttpClient) {
   }
 
+  private static createBasket(): IBasket {
+    const basket = new Basket();
+    localStorage.setItem('basket_id', basket.id);
+    return basket;
+  }
+
+  private static mapProductItemToBasketItem(
+    item: IProduct,
+    quantity: number
+  ): IBasketItem {
+    return {
+      id: item.id,
+      productName: item.name,
+      price: item.price,
+      pictureUrl: item.pictureUrl,
+      quantity,
+      brand: item.productBrand,
+      type: item.productType,
+    };
+  }
+
   getBasket(id: string) {
     return this.http.get(this.baseUrl + 'basket?id=' + id).pipe(
       map((basket: IBasket) => {
@@ -42,12 +63,6 @@ export class BasketService {
 
   getCurrentBasketValue() {
     return this.basketSource.value;
-  }
-
-  private static createBasket(): IBasket {
-    const basket = new Basket();
-    localStorage.setItem('basket_id', basket.id);
-    return basket;
   }
 
   incrementItemQuantity(item: IBasketItem) {
@@ -93,6 +108,19 @@ export class BasketService {
     );
   }
 
+  addItemToBasket(item: IProduct, quantity = 1) {
+    const itemToAdd: IBasketItem = BasketService.mapProductItemToBasketItem(
+      item,
+      quantity
+    );
+    let basket = this.getCurrentBasketValue();
+    if (basket === null) {
+      basket = BasketService.createBasket();
+    }
+    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
+    this.setBasket(basket);
+  }
+
   private calculateTotals() {
     const basket = this.getCurrentBasketValue();
     const shipping = 0;
@@ -114,33 +142,5 @@ export class BasketService {
       items[index].quantity += quantity;
     }
     return items;
-  }
-
-  private static mapProductItemToBasketItem(
-    item: IProduct,
-    quantity: number
-  ): IBasketItem {
-    return {
-      id: item.id,
-      productName: item.name,
-      price: item.price,
-      pictureUrl: item.pictureUrl,
-      quantity,
-      brand: item.productBrand,
-      type: item.productType,
-    };
-  }
-
-  addItemToBasket(item: IProduct, quantity = 1) {
-    const itemToAdd: IBasketItem = BasketService.mapProductItemToBasketItem(
-      item,
-      quantity
-    );
-    let basket = this.getCurrentBasketValue();
-    if (basket === null) {
-      basket = BasketService.createBasket();
-    }
-    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
-    this.setBasket(basket);
   }
 }

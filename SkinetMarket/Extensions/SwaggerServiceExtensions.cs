@@ -10,7 +10,7 @@ public static class SwaggerServiceExtensions
     {
         services.AddSwaggerGen(x =>
         {
-            x.SwaggerDoc("v1", new OpenApiInfo {Title = "Skinet Market", Version = "v1"});
+            x.SwaggerDoc("v1", new OpenApiInfo { Title = "Skinet Market", Version = "v1" });
 
             var securitySchema = new OpenApiSecurityScheme
             {
@@ -30,7 +30,7 @@ public static class SwaggerServiceExtensions
 
             var securityRequirement = new OpenApiSecurityRequirement
             {
-                {securitySchema, new[] {"Bearer"}}
+                { securitySchema, new[] { "Bearer" } }
             };
 
             x.AddSecurityRequirement(securityRequirement);

@@ -95,7 +95,7 @@ public class AccountController : BaseApiController
     {
         if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
             return new BadRequestObjectResult(new ApiValidationErrorResponse
-                {Errors = new[] {"Email address is in use"}});
+                { Errors = new[] { "Email address is in use" } });
 
         var user = new AppUser
         {

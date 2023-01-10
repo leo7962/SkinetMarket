@@ -42,7 +42,7 @@ public class ProductsController : BaseApiController
         var products = await _productsRepo.ListAsync(spec);
 
         var data = _mapper
-            .Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>((IReadOnlyList<Product>) products);
+            .Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>((IReadOnlyList<Product>)products);
 
         return Ok(new Pagination<ProductToReturnDto>(productSpecParams.PageIndex, productSpecParams.PageSize,
             totalItems, data));
